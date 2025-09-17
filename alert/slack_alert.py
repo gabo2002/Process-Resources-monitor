@@ -27,6 +27,10 @@ class SlackMessageAlert:
         self.unit = unit
         self.identifier = identifier
 
+    def alert(self, timestamp: str, message: str):
+        """Manda un messaggio di alert a Slack."""
+        self._send_slack_message(f"{timestamp} - {message}")
+
     def evaluate_and_alert(self, timestamp: str, results: List[tuple]):
         """
         Valuta i risultati e manda messaggi di allerta se necessario.
