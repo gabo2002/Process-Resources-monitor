@@ -1,0 +1,9 @@
+*.db
+*.sqlite
+__pycache__/
+*.pyc
+include/
+lib/
+bin/
+pyvenv.cfg
+.env
