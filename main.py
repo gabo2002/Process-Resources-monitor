@@ -42,9 +42,9 @@ def main():
                 finded_logs.append(log)
                 print(f"New log found: {log['file']}")
                 # Send log to Slack
-                slack_alert_logs.alert(time.strftime("%Y-%m-%d %H:%M:%S"), [("FileName", log['file'])])
-                slack_alert_logs.alert(time.strftime("%Y-%m-%d %H:%M:%S"), [("Contents", log['contents'][:3000] + ("..." if len(log['contents']) > 3000 else ""))])
-        
+                slack_alert_logs.alert(f"*ALERT* - {os.environ.get('IDENTIFIER')} {time.strftime('%Y-%m-%d %H:%M:%S')}", [("FileName", log['file'])])
+                slack_alert_logs.alert(f"*ALERT* - {os.environ.get('IDENTIFIER')} {time.strftime('%Y-%m-%d %H:%M:%S')}", [("Contents", log['contents'][:3000] + ("..." if len(log['contents']) > 3000 else ""))])
+
         print(f"Sleeping for {POLL_INTERVAL} seconds...")
         time.sleep(POLL_INTERVAL)
 
